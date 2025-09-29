@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 import RPi.GPIO as GPIO, time
 
+
+#kb@raspberrypi:~/loadcell $ python main.py
 #영점 설정 중...
 #영점: 5746
 #298g 추를 올리고 Enter
@@ -25,7 +27,7 @@ def read_channel(pulses_after):
     v = 0
     for _ in range(24):
         GPIO.output(SCK, 1)
-A128=    5852   무게=   1.0g
+        v = (v << 1) | GPIO.input(DT)
         GPIO.output(SCK, 0)
     if v & 0x800000:
         v -= 1 << 24
